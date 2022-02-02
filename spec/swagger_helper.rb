@@ -28,18 +28,7 @@ RSpec.configure do |config|
           name: 'Authorization',
           in: :header
         }
-      },
-      paths: {},
-      servers: [
-        {
-          url: 'https://blooming-lake-34172.herokuapp.com/',
-          variables: {
-            defaultHost: {
-              default: 'www.example.com'
-            }
-          }
-        }
-      ]
+      }
     }
   }
 
