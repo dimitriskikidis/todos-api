@@ -10,7 +10,7 @@ describe 'Authentication' do
     post 'Log in' do
       consumes 'application/json'
       produces 'application/json'
-      description 'Log in to accesss the API.'
+      description 'Log in to access the API.'
       parameter name: :user, in: :body, required: true, description: 'The fields that are required to log in.', schema: {
         type: :object,
         properties: {

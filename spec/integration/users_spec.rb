@@ -7,7 +7,7 @@ describe 'Users API' do
     post 'Sign up' do
       consumes 'application/json'
       produces 'application/json'
-      description 'Sign up to accesss the API.'
+      description 'Sign up to access the API.'
       parameter name: :user, in: :body, required: true, description: 'The fields that are required to sign up.', schema: {
         type: :object,
         properties: {

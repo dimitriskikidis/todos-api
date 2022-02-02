@@ -15,7 +15,7 @@ describe 'Items API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :todo_id, in: :path, type: :integer, required: true
+      parameter name: :todo_id, in: :path, type: :integer, description: 'Todo\'s id.', required: true
 
       response '200', 'Todo\'s item list returned.' do
         let(:todo_id) { todo.id }
@@ -40,14 +40,14 @@ describe 'Items API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :todo_id, in: :path, type: :integer, required: true
-      parameter name: :todo_item, in: :body, required: true, schema: {
+      parameter name: :todo_id, in: :path, type: :integer, description: 'Todo\'s id.', required: true
+      parameter name: :todo_item, in: :body, required: true, description: 'Todo\'s fields.', schema: {
         type: :object,
         properties: {
           name: { type: :string },
           done: { type: :boolean }
         },
-        required: ['name', 'done']
+        required: ['name']
       }
 
       response '201', 'Todo item created.' do
@@ -79,8 +79,8 @@ describe 'Items API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :todo_id, in: :path, type: :integer, required: true
-      parameter name: :id, in: :path, type: :integer, required: true
+      parameter name: :todo_id, in: :path, type: :integer, description: 'Todo\'s id.', required: true
+      parameter name: :id, in: :path, type: :integer, description: 'Todo item\'s id.', required: true
 
       response '200', 'Todo item returned.' do
         let(:todo_id) { todo.id }
@@ -108,9 +108,9 @@ describe 'Items API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :todo_id, in: :path, type: :integer, required: true
-      parameter name: :id, in: :path, type: :integer, required: true
-      parameter name: :todo_item, in: :body, required: true, schema: {
+      parameter name: :todo_id, in: :path, type: :integer, description: 'Todo\'s id.', required: true
+      parameter name: :id, in: :path, type: :integer, description: 'Todo item\'s id.', required: true
+      parameter name: :todo_item, in: :body, required: true, description: 'Todo item\'s fields.', schema: {
         type: :object,
         properties: {
           name: { type: :string },
@@ -147,8 +147,8 @@ describe 'Items API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :todo_id, in: :path, type: :integer, required: true
-      parameter name: :id, in: :path, type: :integer, required: true
+      parameter name: :todo_id, in: :path, type: :integer, description: 'Todo\'s id.', required: true
+      parameter name: :id, in: :path, type: :integer, description: 'Todo item\'s id.', required: true
 
       response '204', 'Todo item deleted.' do
         let(:todo_id) { todo.id }

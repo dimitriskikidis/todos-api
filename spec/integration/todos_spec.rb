@@ -29,7 +29,7 @@ describe 'Todos API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :todo, in: :body, required: true, schema: {
+      parameter name: :todo, in: :body, required: true, description: 'Todo\'s fields.', schema: {
         type: :object,
         properties: {
           title: { type: :string }
@@ -57,7 +57,7 @@ describe 'Todos API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :id, in: :path, type: :integer, required: true
+      parameter name: :id, in: :path, type: :integer, description: 'Todo\'s id.', required: true
 
       response '200', 'Todo returned.' do
         let(:id) { todo_id }
@@ -83,7 +83,7 @@ describe 'Todos API' do
       produces 'application/json'
       security [ Authorization: [] ]
       parameter name: :id, in: :path, type: :integer, required: true
-      parameter name: :todo, in: :body, required: true, schema: {
+      parameter name: :todo, in: :body, required: true, description: 'Todo\'s fields.', schema: {
         type: :object,
         properties: {
           title: { type: :string }
@@ -118,7 +118,7 @@ describe 'Todos API' do
       consumes 'application/json'
       produces 'application/json'
       security [ Authorization: [] ]
-      parameter name: :id, in: :path, type: :integer, required: true
+      parameter name: :id, in: :path, type: :integer, description: 'Todo\'s id.', required: true
 
       response '204', 'Todo deleted, along with its items.' do
         let(:id) { todo_id }
