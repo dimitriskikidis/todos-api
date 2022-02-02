@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2022_01_29_155231) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.boolean "done"
-    t.integer "todo_id", null: false
+    t.bigint "todo_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["todo_id"], name: "index_items_on_todo_id"

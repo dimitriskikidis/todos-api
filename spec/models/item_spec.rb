@@ -6,7 +6,6 @@ RSpec.describe Item, type: :model do
   # ensure an item record belongs to a single todo record
   it { should belong_to(:todo) }
   # Validation test
-  # ensure columns name and done are present before saving
+  # ensure column name is present before saving
   it { should validate_presence_of(:name) }
-  it { should validate_inclusion_of(:done).in_array([true, false]) }
 end
