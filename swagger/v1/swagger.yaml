@@ -1,0 +1,327 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+securityDefinitions:
+  Authorization:
+    description: API key.
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  "/auth/login":
+    post:
+      summary: Log in
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      description: Log in to accesss the API.
+      parameters:
+      - name: user
+        in: body
+        required: true
+        description: The fields that are required to log in.
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+          required:
+          - email
+          - password
+      responses:
+        '200':
+          description: Logged in successfully.
+        '401':
+          description: Invalid credentials.
+  "/todos/{todo_id}/items":
+    get:
+      summary: List all todo's items.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: todo_id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Todo's item list returned.
+        '404':
+          description: Todo does not exist.
+        '422':
+          description: Invalid or missing token.
+    post:
+      summary: Create a new todo item.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: todo_id
+        in: path
+        type: integer
+        required: true
+      - name: todo_item
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            done:
+              type: boolean
+          required:
+          - name
+          - done
+      responses:
+        '201':
+          description: Todo item created.
+        '404':
+          description: Todo does not exist.
+        '422':
+          description: Invalid token, missing token or invalid request.
+  "/todos/{todo_id}/items/{id}":
+    get:
+      summary: Get a todo item.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: todo_id
+        in: path
+        type: integer
+        required: true
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Todo item returned.
+        '404':
+          description: Todo or todo item does not exist.
+        '422':
+          description: Invalid or missing token.
+    put:
+      summary: Update a todo item.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: todo_id
+        in: path
+        type: integer
+        required: true
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: todo_item
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            done:
+              type: boolean
+      responses:
+        '204':
+          description: Todo item updated.
+        '404':
+          description: Todo or todo item does not exist.
+        '422':
+          description: Invalid token, missing token or invalid request.
+    delete:
+      summary: Delete a todo item.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: todo_id
+        in: path
+        type: integer
+        required: true
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Todo item deleted.
+        '404':
+          description: Todo or todo item does not exist.
+        '422':
+          description: Invalid or missing token.
+  "/todos":
+    get:
+      summary: List all todos.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      responses:
+        '200':
+          description: User's todo list returned.
+        '422':
+          description: Invalid or missing token.
+    post:
+      summary: Create a new todo.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: todo
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+          required:
+          - title
+      responses:
+        '201':
+          description: Todo created.
+        '422':
+          description: Invalid token, missing token or invalid request.
+  "/todos/{id}":
+    get:
+      summary: Get a todo.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Todo returned.
+        '404':
+          description: Todo does not exist.
+        '422':
+          description: Invalid or missing token.
+    put:
+      summary: Update a todo.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: todo
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+          required:
+          - title
+      responses:
+        '204':
+          description: Todo updated.
+        '404':
+          description: Todo does not exist.
+        '422':
+          description: Invalid or missing token.
+    delete:
+      summary: Delete a todo and its items.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - Authorization: {}
+      parameters:
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Todo deleted, along with its items.
+        '404':
+          description: Todo does not exist.
+        '422':
+          description: Invalid or missing token.
+  "/signup":
+    post:
+      summary: Sign up
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      description: Sign up to accesss the API.
+      parameters:
+      - name: user
+        in: body
+        required: true
+        description: The fields that are required to sign up.
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+            password_confirmation:
+              type: string
+          required:
+          - name
+          - email
+          - password
+          - password_confirmation
+      responses:
+        '201':
+          description: Account created successfully.
+        '401':
+          description: Passwords don't match.
+        '422':
+          description: Invalid request.
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
