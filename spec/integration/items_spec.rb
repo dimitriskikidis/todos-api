@@ -39,7 +39,7 @@ describe 'Items API' do
     post 'Create a new todo item.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :todo_id, in: :path, type: :integer, required: true
       parameter name: :todo_item, in: :body, required: true, schema: {
         type: :object,
@@ -78,7 +78,7 @@ describe 'Items API' do
     get 'Get a todo item.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :todo_id, in: :path, type: :integer, required: true
       parameter name: :id, in: :path, type: :integer, required: true
 
@@ -107,7 +107,7 @@ describe 'Items API' do
     put 'Update a todo item.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :todo_id, in: :path, type: :integer, required: true
       parameter name: :id, in: :path, type: :integer, required: true
       parameter name: :todo_item, in: :body, required: true, schema: {
@@ -146,7 +146,7 @@ describe 'Items API' do
     delete 'Delete a todo item.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :todo_id, in: :path, type: :integer, required: true
       parameter name: :id, in: :path, type: :integer, required: true
 

@@ -12,7 +12,7 @@ describe 'Todos API' do
     get 'List all todos.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
 
       response '200', 'User\'s todo list returned.' do
         let(:Authorization) { token_generator(test_user.id) }
@@ -28,7 +28,7 @@ describe 'Todos API' do
     post 'Create a new todo.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :todo, in: :body, required: true, schema: {
         type: :object,
         properties: {
@@ -56,7 +56,7 @@ describe 'Todos API' do
     get 'Get a todo.' do 
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :id, in: :path, type: :integer, required: true
 
       response '200', 'Todo returned.' do
@@ -81,7 +81,7 @@ describe 'Todos API' do
     put 'Update a todo.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :id, in: :path, type: :integer, required: true
       parameter name: :todo, in: :body, required: true, schema: {
         type: :object,
@@ -117,7 +117,7 @@ describe 'Todos API' do
 
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :id, in: :path, type: :integer, required: true
 
       response '204', 'Todo deleted, along with its items.' do
