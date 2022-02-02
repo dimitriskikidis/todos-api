@@ -32,7 +32,12 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://blooming-lake-34172.herokuapp.com/'
+          url: 'https://blooming-lake-34172.herokuapp.com/',
+          variables: {
+            defaultHost: {
+              default: 'www.example.com'
+            }
+          }
         }
       ]
     }

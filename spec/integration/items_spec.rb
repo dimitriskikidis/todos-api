@@ -14,7 +14,7 @@ describe 'Items API' do
     get 'List all todo\'s items.' do
       consumes 'application/json'
       produces 'application/json'
-      security [ Authorization: {} ]
+      security [ Authorization: [] ]
       parameter name: :todo_id, in: :path, type: :integer, required: true
 
       response '200', 'Todo\'s item list returned.' do

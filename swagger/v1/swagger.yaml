@@ -46,7 +46,7 @@ paths:
       produces:
       - application/json
       security:
-      - Authorization: {}
+      - Authorization: []
       parameters:
       - name: todo_id
         in: path
@@ -322,3 +322,6 @@ paths:
           description: Invalid request.
 servers:
 - url: https://blooming-lake-34172.herokuapp.com/
+  variables:
+    defaultHost:
+      default: www.example.com
