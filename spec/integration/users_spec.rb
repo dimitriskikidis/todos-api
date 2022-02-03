@@ -4,7 +4,7 @@ describe 'Users API' do
 
   path '/signup' do
 
-    post 'Sign up' do
+    post 'Sign up.' do
       consumes 'application/json'
       produces 'application/json'
       description 'Sign up to access the API.'

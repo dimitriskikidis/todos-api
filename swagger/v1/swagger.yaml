@@ -12,7 +12,7 @@ securityDefinitions:
 paths:
   "/auth/login":
     post:
-      summary: Log in
+      summary: Log in.
       consumes:
       - application/json
       produces:
@@ -299,7 +299,7 @@ paths:
           description: Invalid or missing token.
   "/signup":
     post:
-      summary: Sign up
+      summary: Sign up.
       consumes:
       - application/json
       produces:

@@ -7,7 +7,7 @@ describe 'Authentication' do
 
   path '/auth/login' do
 
-    post 'Log in' do
+    post 'Log in.' do
       consumes 'application/json'
       produces 'application/json'
       description 'Log in to access the API.'
