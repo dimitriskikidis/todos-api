@@ -45,7 +45,11 @@ RSpec.describe 'Users API', type: :request do
       before { post '/signup', params: invalid_attributes.to_json, headers: headers }
 
       it 'returns a failure message' do
-        expect(json['message']).to match(/Invalid credentials/)
+        expect(json['message']).to match(/Passwords don't match/)
+      end
+
+      it 'does not create a new user' do
+        expect(response).to have_http_status(422)
       end
     end
   end

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # POST /signup
   # return authenticated token upon signup
   def create
-    raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials) if user_params[:password] != user_params[:password_confirmation]
+    raise(ExceptionHandler::PassowrdsDontMatch, Message.passwords_dont_match) if user_params[:password] != user_params[:password_confirmation]
     user = User.create!(user_params)
     auth_token = AuthenticateUser.new(user.email, user.password).call
     response = { message: Message.account_created, auth_token: auth_token }

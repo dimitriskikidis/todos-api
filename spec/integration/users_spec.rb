@@ -24,13 +24,8 @@ describe 'Users API' do
         run_test!
       end
 
-      response '401', 'Passwords don\'t match.' do
-        let(:user) { { name: 'Foo', email: 'bar@gmail.com', password: 'foobar', password_confirmation: 'bar' } }
-        run_test!
-      end
-
       response '422', 'Invalid request.' do
-        let(:user) { {  } }
+        let(:user) { { name: 'Foo', email: 'bar@gmail.com', password: 'foobar', password_confirmation: 'bar' } }
         run_test!
       end
     end
