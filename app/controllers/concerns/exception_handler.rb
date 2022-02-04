@@ -20,7 +20,7 @@ module ExceptionHandler
     end
 
     rescue_from ActiveRecord::RecordNotUnique do |e|
-      json_response({ message: 'Validation failed: Email has already been taken'}, :unprocessable_entity)
+      json_response({ message: 'Validation failed: Email has already been taken' }, :unprocessable_entity)
     end
   end
 
